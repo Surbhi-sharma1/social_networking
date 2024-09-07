@@ -1,0 +1,156 @@
+.profile {
+  display: flex;
+}
+
+.profileCover {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.profileCoverImg {
+  width: 60%;
+  height: 40%;
+
+  background-size: contain;
+}
+
+.profileUserImg {
+  width: 10vw;
+  height: 15vh;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+
+  margin: auto;
+  top: 20vh;
+  left: 4vh;
+  border: 4px solid white;
+}
+
+/* @media (max-width: 480px) {
+  .profileCover {
+    height: 35vh;
+  }
+
+  .profileUserImg {
+    width: 20vw;
+    height: 10vh;
+    top: 8vh;
+    left: 3vw;
+  }
+  .profileCoverImg {
+    height: 40vh; 
+  }
+
+  .profileUserImg {
+    width: 30vw; 
+    height: 20vh; 
+    top: 15vh;
+    left: 5vw; 
+  }
+
+  .editProfile {
+    width: 80%;
+    font-size: 0.9rem; 
+    padding: 6px 12px; 
+  }
+
+  .Settings {
+    width: 50px; 
+    height: 50px;
+    font-size: 1.5rem;
+    padding: 0;
+  }
+} */
+.editProfile {
+  background-color: white;
+  color: black;
+  border: black;
+  border-radius: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.editProfile:hover {
+  background-color: #155db1;
+  transform: translateY(-2px);
+}
+
+.editProfile:active {
+  background-color: #0e3a76;
+  transform: translateY(1px);
+}
+.topbarIconItem {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  justify-content: end;
+
+}
+.Settings {
+  background-color: white;
+  color: black;
+  border: black;
+  border-radius: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.Settings:hover {
+  background-color: #155db1;
+  transform: translateY(-2px);
+}
+
+.Settings:active {
+  background-color: #4f6a8f;
+  transform: translateY(1px);
+}
+@media (max-width: 480px) {
+  .profileCover {
+    height: 35vh;
+  }
+
+  .profileCoverImg {
+    width: 100%;  /* Adjust cover image width to fit the screen */
+    height: 20vh;  /* Increase height for a better look on mobile */
+  }
+
+  .profileUserImg {
+    width: 25vw; 
+    height: 18vh; 
+    top: 15vh;
+    left: 5vw; 
+  }
+  .editProfile{
+    width: 30%;
+    justify-content: center;
+    font-size: 1rem;
+  }
+  .Settings {
+    width: 10%;
+    font-size: 1rem;
+  
+ /* Center the buttons with margin */
+  }
+
+  .topbarIconItem {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    width: 70%;
+    top: 0.5vh;
+    right: 0;
+  }
+ 
+}
