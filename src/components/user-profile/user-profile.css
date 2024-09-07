@@ -30,42 +30,6 @@
   left: 4vh;
   border: 4px solid white;
 }
-
-/* @media (max-width: 480px) {
-  .profileCover {
-    height: 35vh;
-  }
-
-  .profileUserImg {
-    width: 20vw;
-    height: 10vh;
-    top: 8vh;
-    left: 3vw;
-  }
-  .profileCoverImg {
-    height: 40vh; 
-  }
-
-  .profileUserImg {
-    width: 30vw; 
-    height: 20vh; 
-    top: 15vh;
-    left: 5vw; 
-  }
-
-  .editProfile {
-    width: 80%;
-    font-size: 0.9rem; 
-    padding: 6px 12px; 
-  }
-
-  .Settings {
-    width: 50px; 
-    height: 50px;
-    font-size: 1.5rem;
-    padding: 0;
-  }
-} */
 .editProfile {
   background-color: white;
   color: black;
@@ -122,8 +86,8 @@
   }
 
   .profileCoverImg {
-    width: 100%;  /* Adjust cover image width to fit the screen */
-    height: 20vh;  /* Increase height for a better look on mobile */
+    width: 100%;  
+    height: 20vh;  
   }
 
   .profileUserImg {
@@ -140,8 +104,6 @@
   .Settings {
     width: 10%;
     font-size: 1rem;
-  
- /* Center the buttons with margin */
   }
 
   .topbarIconItem {

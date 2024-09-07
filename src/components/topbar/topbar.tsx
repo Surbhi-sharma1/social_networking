@@ -1,7 +1,6 @@
 import "./topbar.css";
 import SearchIcon from "@mui/icons-material/Search";
 
-
 import React from "react";
 
 import avatars from "../../assets/avatars.jpg";
@@ -9,7 +8,6 @@ import avatars from "../../assets/avatars.jpg";
 const Topbar: React.FC = () => {
   return (
     <div className="topbarContainer">
-      
       <div className="topbarLeft">
         <span className="logo">IConnect</span>
       </div>
@@ -23,7 +21,6 @@ const Topbar: React.FC = () => {
         </div>
       </div>
       <div className="topbarRight">
-    
         <img src={avatars} alt="Profile" className="topbarImg" />
       </div>
     </div>
