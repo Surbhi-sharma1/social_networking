@@ -11,6 +11,7 @@
   z-index: 1000;
   padding: 0 20px;
   box-sizing: border-box;
+  min-height:4vh !important; 
 }
 
 .topbarLeft {
@@ -20,7 +21,7 @@
 .logo {
   font-size: 24px;
   white-space: nowrap;
-  overflow: hidden; 
+  overflow: hidden;
   font-weight: bold;
   color: white;
   cursor: pointer;
@@ -41,7 +42,6 @@
 .searchInput {
   border: none;
   width: 70%;
-  padding: 1% 2%;
 }
 .searchInput:focus {
   outline: none;
@@ -67,7 +67,7 @@
 
 .topbarIcons {
   display: flex;
-  
+
   justify-content: space-between;
   margin-right: 8vw;
 }
@@ -78,7 +78,7 @@
   cursor: pointer;
   position: relative;
 }
-.menuIcon{
+.menuIcon {
   display: none;
 }
 
@@ -90,23 +90,24 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 480px) {
+@media(max-width: 480px) {
   .topbarLeft .logo {
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
     justify-content: center;
-   
   }
   .topbarContainer {
     padding: 5px 10px;
+    min-height:4vh !important; 
+  
   }
- .searchbar{
-  width:100%
- }
- .searchInput {
-  border: none;
-  width: 100%;
-  padding: 1% 2%;
-}
+  .searchbar {
+    width: 100%;
+  }
+  .searchInput {
+    border: none;
+    width: 100%;
+    padding: 1% 2%;
+  }
   .logo {
     font-size: 18px;
   }
@@ -114,5 +115,9 @@
     width: 10vw;
     height: 10vw;
   }
-
+}
+@media(min-width: 1024px) {
+  .topbarContainer {
+    min-height: 6vh;
+  }
 }

@@ -1,29 +1,54 @@
+import { createContext, useContext, ReactNode, useState, useMemo } from 'react';
+import { ThemeProvider } from 'styled-components';
 
-import { ReactNode } from "react";
-import { ThemeProvider } from "styled-components";
+const lightTheme = {
+  colors: {
+    primary: '#0070f3',
+    bg: 'blue',
+    text: 'white',
+     black: 'black',
+    bgcolor:'white'
+  },
+  fontSize: '16px',
+};
 
-type ThemeProps = {
-    children: ReactNode;
+const darkTheme = {
+  colors: {
+    primary: '#0070f3',
+    bg: 'black',
+    text: 'white',
+    black: 'black',
+    bgcolor:'black'
+  },
+  fontSize: '16px',
+};
+
+const ThemeContext = createContext({
+  theme: lightTheme,
+  toggleTheme: () => {},
+});
+
+export const useTheme = () => useContext(ThemeContext);
+
+type ThemeProviderProps = {
+  children: ReactNode;
+};
+
+export const ThemeProviderComponent = ({ children }: ThemeProviderProps) => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleTheme = () => {
+    setIsDarkMode((prevMode) => !prevMode);
   };
 
-  const theme = {
-    colors: {
-      powderWhite: "#FFFDF9",
-      persianGreen: "#06B49A",
-      lightBlue: "#0f172a",
-      onyx: "#36313D",
-      grey:'grey',
-      black:'black'
-    },
-    fonts: ["sans-serif", "Roboto"],
-    fontSizes: {
-      small: "1em",
-      medium: "2em",
-      large: "3em"
-    }
-  };
-const Theme = ({ children}:ThemeProps) => (
-  <ThemeProvider theme={theme}>{children}</ThemeProvider>
-);
-
-export default Theme;
+  const theme = useMemo(() => (isDarkMode ? darkTheme : lightTheme), [isDarkMode]);
+console.log('theme value',theme);
+  return (
+    <ThemeProvider theme={theme}>
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        {children}
+      
+      </ThemeContext.Provider>
+    </ThemeProvider>
+  );
+};

@@ -1,22 +1,33 @@
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import Home from "./pages/home";
 
-import Footer from "./components/footer";
-import Topbar from "./components/topbar/topbar";
-
-import ProfileComponent from "./components/user-profile/user-profile";
-import Sidebar from "./components/sidebar/sidebar";
+import ProfileComponent from "./pages/user-profile";
+import SignupUser from "./pages/sign-up";
+import { ThemeProviderComponent } from "./provider/theme/theme-provider";
 
 function App() {
   return (
-   
-     
-     <div><Topbar />
-  <Sidebar />
-     <ProfileComponent 
-      
-      />
-     <Footer text="© 2024 Social Networking App. All rights reserved." /></div>
- 
+    <>
+      <ThemeProviderComponent>
+        <div>
+          <Routes>
+            <Route path="/signup" element={<SignupUser />} />
+            <Route path="/home" element={<Home />} />
+            <Route
+              path="/profile"
+              element={
+                <ProfileComponent
+                  name="Surbhi Sharma"
+                  companyName="Sourcefuse"
+                  email="surbhi@sourcefuse.com"
+                />
+              }
+            />
+          </Routes>
+        </div>
+      </ThemeProviderComponent>
+    </>
   );
 }
 

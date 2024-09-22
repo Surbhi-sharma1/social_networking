@@ -1,17 +1,27 @@
 import styled from "styled-components";
-
-export const FooterContainer = styled.footer`
+import { useTheme } from "../../provider/theme/theme-provider";
+interface Props {
+  colors?: {
+    primary: string;
+    bg: string;
+    text: string;  
+    black: string;  
+    white:string;
+  };
+  fontSize?: string;  
+}
+export const FooterContainer= styled.footer<Props>`
 position: fixed;
 bottom: 0;
 left: 0;
 width: 100%;
-background-color:#4c93f1; 
+background-color: ${props => props.colors?.bg};
 padding: 10px 20px; 
 display: flex;
 align-items: center; 
 justify-content: center; 
-color: white;
-height:2vh
+color: ${props => props.colors?.text};
+height:2vh;
 font-size:3.2em 
 box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
 z-index: 1000;
@@ -31,14 +41,15 @@ font-weight-bold
 }
 `;
 interface FooterProps {
-    text: string;
-  }
+  text: string;
+}
 
-  const Footer: React.FC<FooterProps> = ({ text }:FooterProps) => {
-    return (
-        <FooterContainer className="footer">
-        <p>{text}</p>
-      </FooterContainer>
-    );
-  };
-  export default Footer
+const Footer: React.FC<FooterProps> = ({ text }: FooterProps) => {
+const {theme}=useTheme()
+  return (
+    <FooterContainer className="footer" {...theme}>
+      <p>{text}</p>
+    </FooterContainer>
+  );
+};
+export default Footer;
