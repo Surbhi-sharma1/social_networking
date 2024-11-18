@@ -17,15 +17,15 @@ const ModalOverlay = styled.div<{ isOpen: boolean }>`
   background: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
+   backdrop-filter: blur(8px);
 `;
 
 const ModalContent = styled.div`
   background-color: white;
   padding: 20px;
   border-radius: 8px;
-  width: 50%;
+  width: 40%;
   max-width: 100%;
-  margin-top:
   height: 50%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;

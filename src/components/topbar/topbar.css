@@ -121,3 +121,60 @@
     min-height: 6vh;
   }
 }
+
+.topbarIconItem .MuiSvgIcon-root {
+  font-size: 2rem; 
+  margin-right: 10px;
+  color:white;
+  cursor:pointer;
+}
+.notificationBadge{
+ color: red;
+ border-radius: 50%;
+ padding: 0.1rem 0.5rem;
+ font-size: 1rem;
+
+ position: absolute;
+ top: -1;
+ right: 0;
+}
+
+.notificationDropdown {
+  position: absolute;
+  top: 2.5rem;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+  width: 250px;
+  z-index: 1000;
+}
+
+ .notificationDropdown h4 {
+ 
+  font-size: 1.2rem;
+  color:black;
+}
+
+.notificationDropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color:black;
+}
+
+.notificationDropdown li {
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+.notificationDropdown li:last-child {
+  border-bottom: none;
+}
+
+.notificationDropdown p {
+  margin: 10px 0;
+  text-align: center;
+  color: black;
+} 

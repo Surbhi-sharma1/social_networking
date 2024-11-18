@@ -3,6 +3,7 @@ import styled from "styled-components";
 import HomeIcon from "@mui/icons-material/Home";
 import ChatIcon from "@mui/icons-material/Chat";
 import PeopleIcon from "@mui/icons-material/People";
+import { useNavigate } from "react-router-dom";
 
 const SidebarContainer = styled.div`
   width: 16vw;
@@ -62,9 +63,13 @@ const TextWrapper = styled.span`
   }
 `;
 const Sidebar: React.FC = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/home");
+  };
   return (
     <SidebarContainer>
-      <SidebarItem>
+      <SidebarItem onClick={handleClick}>
         <IconWrapper>
           <HomeIcon />
         </IconWrapper>

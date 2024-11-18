@@ -1,12 +1,16 @@
 import { z } from "zod";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styled from "styled-components";
 import ImageIcon from "@mui/icons-material/Image";
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
-
+import { useDispatch } from 'react-redux';
+import { addPost } from "../../redux/posts/post";
+import { AppDispatch } from "../../redux/store";
+import { io } from "socket.io-client";
+import { notifyUser } from "../../redux/notification/notification";
 export const postSchema = z.object({
   title: z.string().min(5, "Title is Required"),
   description: z.string().min(10, "Description in 100 characters").optional(),
@@ -17,7 +21,7 @@ export const postSchema = z.object({
 type CreatePostFormData = z.infer<typeof postSchema>;
 
 const TextInput = styled.input`
-  width: 80%;
+  width: 40%;
   margin-top: 4vh;
   padding: 10px;
   border: 1px solid #222020;
@@ -59,8 +63,25 @@ const IconButton = styled.button`
     color: #000;
   }
 `;
+const Heading = styled.div`
+color:black;
+ font-size: 30px;
+`;
+interface ModalProps {
+  onClose: () => void; 
+}
+const socket = io("http://localhost:4000");
+export const CreatePostForm: React.FC<ModalProps> = ({onClose}) => {
+  let dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    socket.on("newPost", (postData) => {
+      dispatch(notifyUser({ message: postData.message, postData: postData.postData }));
+    });
 
-export const CreatePostForm: React.FC = () => {
+    return () => {
+      socket.off("newPost"); 
+    };
+  }, [dispatch]);
   const {
     register,
     handleSubmit,
@@ -68,13 +89,26 @@ export const CreatePostForm: React.FC = () => {
   } = useForm<CreatePostFormData>({
     resolver: zodResolver(postSchema),
   });
+  const onSubmit = (data: CreatePostFormData) => {
+    console.log("Form Submitted: ", data);
+    const postData={
+      id: 3,
+      name: "Surbhi Sharma",
+      userId: 1,
+      profilePic:
+        "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      desc: "description",
+      img: "https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    };
+    dispatch(addPost(postData));
+    socket.emit("newPost", postData);
+    onClose();
+  };
 const imageInputRef=useRef<HTMLInputElement|null>(null);
   const videoInputRef = useRef<HTMLInputElement | null>(null);
   const attachmentInputRef = useRef<HTMLInputElement | null>(null);
 
-  const onSubmit = (data: CreatePostFormData) => {
-    console.log("Form Submitted: ", data);
-  };
+ 
 
   // Handlers to open the file input dialog
   const handleImageClick = () => {
@@ -102,10 +136,9 @@ const imageInputRef=useRef<HTMLInputElement|null>(null);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <h2 className="heading">Post Your Update</h2>
-
-        <TextInput
-          style={{ width: "40vw" }}
+        <Heading>Post Your Update</Heading>
+              <TextInput
+          style={{ width: "32vw" }}
           {...register("title")}
           type="text"
           placeholder="Add a title..."

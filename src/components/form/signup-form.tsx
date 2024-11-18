@@ -105,6 +105,7 @@ const MultiStepForm: React.FC = () => {
   
   return (
     <div>
+      <h1>Sign Up.</h1>
       {successMessage && (
         <div className="success-message">{successMessage}</div>
       )}
